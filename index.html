@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soukaina — Hello, it's me</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --cream: #FFF9F2;
+    --sand: #F7EDE0;
+    --terra: #C67B5C;
+    --terra-dark: #A85F42;
+    --brown: #3E2F26;
+    --muted: #8A7568;
+  }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--brown);
+    line-height: 1.7;
+  }
+  header {
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(160deg, #FFF9F2 0%, #FBEEDF 55%, #F6DFC8 100%);
+  }
+  .hello {
+    font-size: 1.1rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-size: clamp(2.8rem, 8vw, 5rem);
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+  }
+  h1 .accent { color: var(--terra); }
+  .tagline {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: var(--muted);
+    max-width: 560px;
+  }
+  .scroll-hint {
+    margin-top: 3rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+  section {
+    padding: 4.5rem 1.5rem;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  section.alt { background: var(--sand); max-width: 100%; }
+  section.alt .inner { max-width: 860px; margin: 0 auto; }
+  h2 {
+    font-size: 1.9rem;
+    margin-bottom: 1.4rem;
+    position: relative;
+    display: inline-block;
+  }
+  h2::after {
+    content: '';
+    display: block;
+    width: 56px;
+    height: 4px;
+    background: var(--terra);
+    border-radius: 2px;
+    margin-top: 6px;
+  }
+  p { margin-bottom: 1rem; color: #5A4A3E; }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+    margin-top: 1.6rem;
+  }
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.6rem;
+    box-shadow: 0 6px 24px rgba(198, 123, 92, 0.12);
+    transition: transform 0.25s ease;
+  }
+  .card:hover { transform: translateY(-5px); }
+  .card .icon { font-size: 1.8rem; margin-bottom: 0.6rem; }
+  .card h3 { font-size: 1.1rem; margin-bottom: 0.4rem; }
+  .card p { font-size: 0.93rem; margin: 0; }
+  .lang-bar {
+    background: #EFE3D3;
+    border-radius: 99px;
+    height: 10px;
+    margin-top: 0.5rem;
+    overflow: hidden;
+  }
+  .lang-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--terra), var(--terra-dark));
+    border-radius: 99px;
+  }
+  .timeline { margin-top: 1.4rem; }
+  .step {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.4rem;
+  }
+  .dot {
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    background: var(--terra);
+    border-radius: 50%;
+    margin-top: 7px;
+    box-shadow: 0 0 0 5px rgba(198,123,92,0.18);
+  }
+  .step strong { display: block; }
+  .step span { color: var(--muted); font-size: 0.93rem; }
+  footer {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    background: var(--brown);
+    color: #EDE0D2;
+    font-size: 0.92rem;
+  }
+  footer .heart { color: var(--terra); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hello">Salam &amp; hello</div>
+  <h1>I'm <span class="accent">Soukaina</span></h1>
+  <p class="tagline">22 years old, from Morocco — a nature lover, a caregiver at heart, and a dreamer on her way to new horizons.</p>
+  <div class="scroll-hint">scroll to meet me ↓</div>
+</header>
+
+<section>
+  <h2>About me</h2>
+  <p>I grew up in the Moroccan countryside for around 10 years, surrounded by animals, plants and wide open nature. That peaceful life shaped who I am — I feel most at home outdoors, among horses, dogs, chickens and green fields.</p>
+  <p>I've also always been surrounded by children in my family. Helping with homework, playing, cooking together and simply being there for them is something I genuinely enjoy and find deeply rewarding.</p>
+  <p>Music is a big part of my everyday life, and I love discovering new things, meeting people and experiencing different cultures.</p>
+</section>
+
+<section class="alt">
+  <div class="inner">
+    <h2>Languages</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">🇲🇦</div>
+        <h3>Arabic</h3>
+        <p>Native — my mother tongue</p>
+        <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+      </div>
+      <div class="card">
+        <div class="icon">🇬🇧</div>
+        <h3>English</h3>
+        <p>Fluent — movies, friends &amp; everyday life</p>
+        <div class="lang-bar"><div class="lang-fill" style="width:85%"></div></div>
+      </div>
+      <div class="card">
+        <div class="icon">🇩🇪</div>
+        <h3>German</h3>
+        <p>B1 level — ÖSD A1 certified, always improving</p>
+        <div class="lang-bar"><div class="lang-fill" style="width:60%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>My journey</h2>
+  <div class="timeline">
+    <div class="step">
+      <div class="dot"></div>
+      <div><strong>Countryside childhood</strong><span>10 years among animals &amp; nature — where my love for the simple life began</span></div>
+    </div>
+    <div class="step">
+      <div class="dot"></div>
+      <div><strong>Digital development diploma</strong><span>Vocational training completed — I love learning how things work</span></div>
+    </div>
+    <div class="step">
+      <div class="dot"></div>
+      <div><strong>German, every day</strong><span>Studying up to B1 — one lesson at a time, one word at a time</span></div>
+    </div>
+    <div class="step">
+      <div class="dot"></div>
+      <div><strong>The au pair dream</strong><span>Next chapter: living with a host family, sharing cultures, growing together</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="inner">
+    <h2>Things I love</h2>
+    <div class="cards">
+      <div class="card"><div class="icon">🐾</div><h3>Animals &amp; nature</h3><p>Horses, dogs, plants — the countryside is my happy place</p></div>
+      <div class="card"><div class="icon">🍰</div><h3>Cooking</h3><p>Moroccan &amp; Middle Eastern desserts, made with love</p></div>
+      <div class="card"><div class="icon">🎵</div><h3>Music</h3><p>Always playing — from Ed Sheeran to new discoveries</p></div>
+      <div class="card"><div class="icon">🎮</div><h3>Gaming</h3><p>Mobile Legends main — Rafaela &amp; Angela</p></div>
+      <div class="card"><div class="icon">💄</div><h3>Beauty &amp; style</h3><p>Makeup, fashion and aesthetics are my playground</p></div>
+      <div class="card"><div class="icon">🚂</div><h3>Travel</h3><p>Train rides across Morocco — Martil, here I come</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Made with <span class="heart">♥</span> by Soukaina — Morocco, 2026
+</footer>
+
+</body>
+</html>
