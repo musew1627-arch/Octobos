@@ -3,276 +3,362 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Les Délices de Soukaina — Recettes marocaines</title>
+<title>Les Délices de Soukaina — Recettes marocaines authentiques</title>
+<meta name="description" content="Recettes marocaines authentiques pas à pas : tajines, couscous, pastilla, chebakia, kaab el ghazal et plus.">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
-    --cream: #FFF9F1;
-    --sand: #F8EDDD;
-    --honey: #D9A441;
-    --terra: #C67B5C;
-    --brown: #3E2F26;
+    --ink: #2B2119;
+    --cream: #FFFBF4;
+    --sand: #F6ECDC;
+    --gold: #C99A3C;
+    --terra: #B4552D;
     --muted: #8A7568;
+    --serif: Georgia, 'Times New Roman', serif;
   }
+  html { scroll-behavior: smooth; }
   body {
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     background: var(--cream);
-    color: var(--brown);
+    color: var(--ink);
     line-height: 1.7;
   }
-  header {
-    text-align: center;
-    padding: 4rem 1.5rem 3rem;
-    background: linear-gradient(160deg, #FFF6E8 0%, #FBEEDF 50%, #F5DDBE 100%);
+  /* ---------- NAV ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 20;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.9rem 2rem;
+    background: rgba(255, 251, 244, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #EBDCC4;
   }
-  header .emoji { font-size: 3.2rem; margin-bottom: 0.6rem; }
-  header h1 { font-size: clamp(2rem, 6vw, 3.2rem); font-weight: 800; }
-  header h1 .accent { color: var(--terra); }
-  header p { color: var(--muted); max-width: 560px; margin: 0.6rem auto 0; }
+  nav .logo { font-family: var(--serif); font-size: 1.3rem; font-weight: bold; }
+  nav .logo span { color: var(--terra); }
+  nav a.nav-link {
+    text-decoration: none; color: var(--ink); font-weight: 600;
+    font-size: 0.95rem; margin-left: 1.4rem;
+  }
+  nav a.nav-link:hover { color: var(--terra); }
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    min-height: 62vh;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    background: url('images/couscous.webp') center/cover no-repeat;
+    color: #fff;
+  }
+  .hero::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(20,12,6,0.55) 0%, rgba(20,12,6,0.35) 45%, rgba(20,12,6,0.72) 100%);
+  }
+  .hero-inner { position: relative; z-index: 1; padding: 4rem 1.5rem; max-width: 760px; }
+  .hero .kicker {
+    letter-spacing: 4px; text-transform: uppercase; font-size: 0.8rem;
+    color: var(--gold); font-weight: 700; margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 7vw, 4.2rem);
+    line-height: 1.15; margin-bottom: 1rem;
+    text-shadow: 0 2px 18px rgba(0,0,0,0.4);
+  }
+  .hero p { font-size: 1.1rem; opacity: 0.92; margin-bottom: 2rem; }
+  .btn {
+    display: inline-block;
+    background: var(--terra); color: #fff;
+    padding: 0.85rem 2.4rem; border-radius: 99px;
+    text-decoration: none; font-weight: 700; font-size: 1rem;
+    transition: transform 0.2s, background 0.2s;
+    box-shadow: 0 8px 24px rgba(180, 85, 45, 0.4);
+  }
+  .btn:hover { background: #96431F; transform: translateY(-2px); }
+  /* ---------- TOOLBAR ---------- */
   .toolbar {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: rgba(255, 249, 241, 0.96);
+    position: sticky; top: 60px; z-index: 15;
+    background: rgba(255, 251, 244, 0.96);
     backdrop-filter: blur(6px);
-    border-bottom: 1px solid #EFE0CC;
+    border-bottom: 1px solid #EBDCC4;
     padding: 0.9rem 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    justify-content: center;
-    align-items: center;
+    display: flex; flex-wrap: wrap; gap: 0.6rem;
+    justify-content: center; align-items: center;
   }
   .toolbar input {
-    padding: 0.6rem 1rem;
-    border-radius: 99px;
-    border: 1.5px solid #E5D3B8;
-    background: #fff;
-    font-size: 0.95rem;
-    width: min(280px, 80vw);
-    outline: none;
+    padding: 0.6rem 1.1rem; border-radius: 99px;
+    border: 1.5px solid #E2CFAE; background: #fff;
+    font-size: 0.95rem; width: min(280px, 80vw); outline: none;
   }
-  .toolbar input:focus { border-color: var(--honey); }
+  .toolbar input:focus { border-color: var(--gold); }
   .pill {
-    padding: 0.55rem 1.1rem;
-    border-radius: 99px;
-    border: 1.5px solid #E5D3B8;
-    background: #fff;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: all 0.2s;
+    padding: 0.55rem 1.15rem; border-radius: 99px;
+    border: 1.5px solid #E2CFAE; background: #fff;
+    cursor: pointer; font-size: 0.9rem; transition: all 0.2s;
   }
-  .pill:hover { border-color: var(--honey); }
+  .pill:hover { border-color: var(--gold); }
   .pill.active {
-    background: var(--terra);
-    border-color: var(--terra);
-    color: #fff;
-    font-weight: 600;
+    background: var(--ink); border-color: var(--ink);
+    color: #fff; font-weight: 600;
   }
-  main {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 2.2rem 1.2rem 4rem;
+  /* ---------- GRID ---------- */
+  main { max-width: 1140px; margin: 0 auto; padding: 3rem 1.4rem 4rem; }
+  .section-head { text-align: center; margin-bottom: 2.2rem; }
+  .section-head h2 { font-family: var(--serif); font-size: 2rem; margin-bottom: 0.3rem; }
+  .section-head p { color: var(--muted); }
+  .section-head .rule {
+    width: 64px; height: 3px; background: var(--gold);
+    margin: 0.9rem auto 0; border-radius: 2px;
   }
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.4rem;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 1.6rem;
   }
   .card {
-    background: #fff;
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 6px 24px rgba(198, 123, 92, 0.12);
+    background: #fff; border-radius: 16px; overflow: hidden;
+    box-shadow: 0 8px 28px rgba(43, 33, 25, 0.08);
     cursor: pointer;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex; flex-direction: column;
   }
-  .card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(198, 123, 92, 0.2); }
-  .card .img {
-    font-size: 3.4rem;
-    text-align: center;
-    padding: 1.8rem 1rem 1.2rem;
-    background: linear-gradient(140deg, #FDF3E3, #F7E3C2);
+  .card:hover { transform: translateY(-7px); box-shadow: 0 16px 40px rgba(43, 33, 25, 0.16); }
+  .card .photo { position: relative; aspect-ratio: 4/3; overflow: hidden; }
+  .card .photo img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.5s ease;
   }
-  .card .body { padding: 1.1rem 1.3rem 1.4rem; }
-  .card h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
-  .meta { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .card:hover .photo img { transform: scale(1.07); }
+  .card .cat-tag {
+    position: absolute; top: 12px; left: 12px;
+    background: rgba(255,255,255,0.94); color: var(--ink);
+    font-size: 0.75rem; font-weight: 700;
+    padding: 0.28rem 0.8rem; border-radius: 99px;
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+  .card .body { padding: 1.2rem 1.35rem 1.4rem; flex: 1; display: flex; flex-direction: column; }
+  .card h3 { font-family: var(--serif); font-size: 1.3rem; margin-bottom: 0.6rem; }
+  .card .desc { color: var(--muted); font-size: 0.92rem; margin-bottom: 1rem; flex: 1; }
+  .meta { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 1rem; }
   .badge {
-    font-size: 0.78rem;
-    padding: 0.2rem 0.7rem;
-    border-radius: 99px;
-    background: var(--sand);
-    color: var(--muted);
+    font-size: 0.76rem; padding: 0.24rem 0.7rem; border-radius: 99px;
+    background: var(--sand); color: var(--muted); font-weight: 600;
   }
   .badge.facile { background: #E4F3E0; color: #3E7A3A; }
-  .badge.moyen { background: #FBEFD4; color: #A07514; }
-  .badge.difficile { background: #F9E2DC; color: #B04A32; }
-  .empty {
-    text-align: center;
-    color: var(--muted);
-    padding: 3rem 1rem;
-    font-size: 1.1rem;
-    display: none;
+  .badge.moyen { background: #FBEFD4; color: #96700F; }
+  .badge.difficile { background: #F9E2DC; color: #A8432B; }
+  .card .cta { color: var(--terra); font-weight: 700; font-size: 0.95rem; }
+  .card:hover .cta { text-decoration: underline; }
+  .empty { text-align: center; color: var(--muted); padding: 3rem 1rem; font-size: 1.1rem; display: none; }
+  /* ---------- ABOUT ---------- */
+  .about {
+    background: var(--ink); color: #EDE0D2;
+    padding: 3.5rem 1.5rem; text-align: center; margin-top: 1rem;
   }
+  .about h2 { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 0.8rem; color: #fff; }
+  .about h2 span { color: var(--gold); }
+  .about p { max-width: 620px; margin: 0 auto; opacity: 0.88; }
+  /* ---------- MODAL ---------- */
   .modal-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(62, 47, 38, 0.55);
-    display: none;
-    justify-content: center;
-    align-items: flex-start;
-    overflow-y: auto;
-    padding: 2rem 1rem;
-    z-index: 50;
+    position: fixed; inset: 0; z-index: 50;
+    background: rgba(30, 20, 12, 0.62);
+    display: none; justify-content: center; align-items: flex-start;
+    overflow-y: auto; padding: 2.2rem 1rem;
   }
   .modal-backdrop.open { display: flex; }
   .modal {
-    background: var(--cream);
-    border-radius: 20px;
-    max-width: 640px;
-    width: 100%;
-    overflow: hidden;
-    animation: pop 0.25s ease;
+    background: var(--cream); border-radius: 20px;
+    max-width: 680px; width: 100%; overflow: hidden;
+    animation: pop 0.28s ease;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.35);
   }
-  @keyframes pop { from { transform: scale(0.96); opacity: 0; } }
-  .modal .img {
-    font-size: 4rem;
-    text-align: center;
-    padding: 2rem 1rem 1.4rem;
-    background: linear-gradient(140deg, #FDF3E3, #F5D3A8);
+  @keyframes pop { from { transform: translateY(16px) scale(0.98); opacity: 0; } }
+  .modal .photo { position: relative; height: 260px; overflow: hidden; }
+  .modal .photo img { width: 100%; height: 100%; object-fit: cover; }
+  .modal .photo::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(20,12,6,0.55) 100%);
   }
-  .modal .content { padding: 1.6rem 1.8rem 2rem; }
-  .modal h2 { font-size: 1.6rem; margin-bottom: 0.4rem; }
-  .modal .meta { margin-bottom: 1.2rem; }
+  .modal .photo h2 {
+    position: absolute; bottom: 1rem; left: 1.6rem; z-index: 1;
+    font-family: var(--serif); color: #fff; font-size: 1.9rem;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+  }
+  .modal .content { padding: 1.6rem 1.9rem 2.1rem; }
+  .modal .meta { margin-bottom: 0.4rem; }
   .modal h4 {
-    margin: 1.3rem 0 0.6rem;
-    color: var(--terra);
-    font-size: 1.05rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    margin: 1.5rem 0 0.7rem; color: var(--terra);
+    font-size: 0.95rem; text-transform: uppercase; letter-spacing: 2px;
   }
-  .modal ul, .modal ol { padding-left: 1.3rem; }
-  .modal li { margin-bottom: 0.45rem; color: #5A4A3E; }
-  .modal ol li { margin-bottom: 0.7rem; }
+  .modal ul.ingredients {
+    padding-left: 0; list-style: none;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem 1.2rem;
+  }
+  .modal ul.ingredients li { color: #5A4A3E; font-size: 0.95rem; padding-left: 1.1rem; position: relative; }
+  .modal ul.ingredients li::before {
+    content: '•'; position: absolute; left: 0; color: var(--gold); font-weight: bold;
+  }
+  .modal ol { padding-left: 0; list-style: none; counter-reset: step; }
+  .modal ol li {
+    counter-increment: step; margin-bottom: 0.9rem; color: #4A3B30;
+    padding-left: 2.6rem; position: relative;
+  }
+  .modal ol li::before {
+    content: counter(step);
+    position: absolute; left: 0; top: 0.1rem;
+    width: 1.8rem; height: 1.8rem; border-radius: 50%;
+    background: var(--sand); color: var(--terra);
+    font-weight: 800; font-size: 0.9rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .tip {
+    margin-top: 1.4rem; padding: 1rem 1.2rem;
+    background: #FDF6E7; border-left: 4px solid var(--gold);
+    border-radius: 0 12px 12px 0; font-size: 0.94rem; color: #6B543A;
+  }
+  .tip strong { color: var(--terra); }
   .close-btn {
-    display: block;
-    margin: 1.6rem auto 0;
-    padding: 0.7rem 2.4rem;
-    border-radius: 99px;
-    border: none;
-    background: var(--terra);
-    color: #fff;
-    font-size: 1rem;
-    cursor: pointer;
-    font-weight: 600;
+    display: block; margin: 1.8rem auto 0;
+    padding: 0.75rem 2.6rem; border-radius: 99px; border: none;
+    background: var(--ink); color: #fff;
+    font-size: 1rem; cursor: pointer; font-weight: 700;
   }
-  .close-btn:hover { background: #A85F42; }
+  .close-btn:hover { background: var(--terra); }
   footer {
-    text-align: center;
-    padding: 2.2rem 1rem;
-    background: var(--brown);
-    color: #EDE0D2;
-    font-size: 0.92rem;
+    text-align: center; padding: 2rem 1rem;
+    background: #1E150E; color: #A89880; font-size: 0.88rem;
+  }
+  @media (max-width: 560px) {
+    .modal ul.ingredients { grid-template-columns: 1fr; }
+    nav { padding: 0.8rem 1.1rem; }
   }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="emoji">🍰</div>
-  <h1>Les Délices de <span class="accent">Soukaina</span></h1>
-  <p>Recettes marocaines authentiques, expliquées pas à pas — du tajine fumant aux douceurs au miel.</p>
-</header>
+<nav>
+  <div class="logo">🍰 Les Délices de <span>Soukaina</span></div>
+  <div>
+    <a class="nav-link" href="#recettes">Recettes</a>
+    <a class="nav-link" href="#apropos">À propos</a>
+  </div>
+</nav>
 
-<div class="toolbar">
+<section class="hero">
+  <div class="hero-inner">
+    <div class="kicker">Cuisine marocaine</div>
+    <h1>Des recettes authentiques,<br>comme à la maison</h1>
+    <p>Tajines fumants, couscous du vendredi et douceurs au miel — chaque recette est expliquée pas à pas, avec des quantités précises.</p>
+    <a class="btn" href="#recettes">Découvrir les recettes</a>
+  </div>
+</section>
+
+<div class="toolbar" id="recettes">
   <input type="text" id="search" placeholder="🔍 Rechercher une recette...">
   <button class="pill active" data-cat="all">Tout</button>
-  <button class="pill" data-cat="sale">Salé 🍲</button>
-  <button class="pill" data-cat="sucre">Sucré 🍯</button>
-  <button class="pill" data-cat="gouter">Goûter 🫓</button>
+  <button class="pill" data-cat="sale">Salé</button>
+  <button class="pill" data-cat="sucre">Sucré</button>
+  <button class="pill" data-cat="gouter">Goûter</button>
 </div>
 
 <main>
+  <div class="section-head">
+    <h2>Nos recettes</h2>
+    <p id="count"></p>
+    <div class="rule"></div>
+  </div>
   <div class="grid" id="grid"></div>
   <div class="empty" id="empty">Aucune recette trouvée 😕</div>
 </main>
 
+<section class="about" id="apropos">
+  <h2>Cuisiné avec <span>♥</span></h2>
+  <p>Chaque recette de ce site est une recette de famille, testée et approuvée. Les quantités sont précises pour un résultat réussi à tous les coups — besaha ouraha !</p>
+</section>
+
 <div class="modal-backdrop" id="backdrop">
   <div class="modal">
-    <div class="img" id="m-img"></div>
-    <div class="content">
+    <div class="photo">
+      <img id="m-img" src="" alt="">
       <h2 id="m-title"></h2>
+    </div>
+    <div class="content">
       <div class="meta" id="m-meta"></div>
       <h4>Ingrédients</h4>
-      <ul id="m-ingredients"></ul>
+      <ul class="ingredients" id="m-ingredients"></ul>
       <h4>Préparation</h4>
       <ol id="m-steps"></ol>
+      <div class="tip" id="m-tip"></div>
       <button class="close-btn" onclick="closeModal()">Fermer</button>
     </div>
   </div>
 </div>
 
-<footer>Made with ♥ par Soukaina — 2026</footer>
+<footer>© 2026 Les Délices de Soukaina — Fait avec ♥ au Maroc</footer>
 
 <script>
 const recipes = [
   {
-    name: "Chebakia", emoji: "🍯", cat: "sucre", catLabel: "Sucré",
-    time: "1h + friture", level: "Difficile", levelClass: "difficile",
+    name: "Chebakia", img: "images/chebakia.webp", cat: "sucre", catLabel: "Sucré",
+    desc: "Fleurs de sésame frites puis enrobées de miel — la reine des douceurs marocaines.",
+    time: "1h + friture", level: "Difficile", levelClass: "difficile", servings: "≈ 30 pièces",
+    tip: "Le miel doit être bien chaud et la chebakia bien égouttée pour un glaçage parfait.",
     ingredients: [
-      "500 g de farine", "125 g de graines de sésame grillées et moulues",
-      "1 c. à café de cannelle", "1/2 c. à café de gomme arabique (meska)",
+      "500 g de farine", "125 g de sésame grillé et moulu",
+      "1 c. à café de cannelle", "1/2 c. à café de gomme arabique",
       "1 pincée de sel", "125 g de beurre fondu", "1 œuf",
       "1 c. à soupe de vinaigre", "10 cl d'eau de fleur d'oranger",
-      "500 g de miel", "Graines de sésame pour décorer", "Huile pour friture"
+      "500 g de miel", "Sésame pour décorer", "Huile pour friture"
     ],
     steps: [
       "Mélangez la farine, le sésame moulu, la cannelle, la gomme arabique et le sel.",
-      "Ajoutez le beurre fondu, l'œuf et le vinaigre, puis ramassez la pâte avec l'eau de fleur d'oranger.",
+      "Ajoutez le beurre fondu, l'œuf et le vinaigre, puis ramassez avec l'eau de fleur d'oranger.",
       "Laissez reposer 30 minutes sous un torchon.",
       "Étalez finement, découpez des bandes et formez des fleurs.",
       "Faites frire dans l'huile chaude jusqu'à belle couleur dorée.",
-      "Plongez immédiatement dans le miel chaud, égouttez et parsemez de sésame."
+      "Plongez aussitôt dans le miel chaud, égouttez et parsemez de sésame."
     ]
   },
   {
-    name: "Kaab el Ghazal", emoji: "🌙", cat: "sucre", catLabel: "Sucré",
-    time: "1h", level: "Moyen", levelClass: "moyen",
+    name: "Kaab el Ghazal", img: "images/kaab.webp", cat: "sucre", catLabel: "Sucré",
+    desc: "Cornes de gazelle fondantes à la pâte d'amande et à la cannelle.",
+    time: "1h", level: "Moyen", levelClass: "moyen", servings: "≈ 20 pièces",
+    tip: "Ne laissez pas dorer : des cornes pâles sont le signe d'une cuisson réussie.",
     ingredients: [
-      "Pâte : 250 g de farine, 125 g de beurre fondu, 1 pincée de sel, eau de fleur d'oranger",
-      "Farce : 250 g d'amandes moulues, 125 g de sucre",
-      "1 c. à café de cannelle", "2 c. à soupe de beurre fondu",
-      "Eau de fleur d'oranger pour ramasser"
+      "250 g de farine", "125 g de beurre fondu", "1 pincée de sel",
+      "Eau de fleur d'oranger", "250 g d'amandes moulues",
+      "125 g de sucre", "1 c. à café de cannelle", "2 c. à soupe de beurre fondu"
     ],
     steps: [
-      "Préparez la pâte, filmez et laissez reposer 30 minutes.",
-      "Mélangez les ingrédients de la farce jusqu'à obtenir une pâte homogène.",
+      "Préparez la pâte avec farine, beurre, sel et fleur d'oranger. Laissez reposer 30 minutes.",
+      "Mélangez amandes, sucre, cannelle et beurre pour la farce.",
       "Étalez la pâte très finement et découpez des ronds.",
       "Déposez un boudin de farce et roulez en forme de croissant.",
       "Enfournez à 160°C pendant 15 à 20 minutes — les gâteaux doivent rester pâles."
     ]
   },
   {
-    name: "Couscous aux légumes", emoji: "🥘", cat: "sale", catLabel: "Salé",
-    time: "1h30", level: "Moyen", levelClass: "moyen",
+    name: "Couscous aux légumes", img: "images/couscous.webp", cat: "sale", catLabel: "Salé",
+    desc: "Le grand classique du vendredi : semoule vapeur, légumes fondants et viande tendre.",
+    time: "1h30", level: "Moyen", levelClass: "moyen", servings: "6 personnes",
+    tip: "Roulez le couscous avec un filet d'huile avant chaque passage à la vapeur.",
     ingredients: [
       "500 g de couscous fin", "500 g de viande (bœuf ou agneau)",
       "2 oignons", "3 carottes", "2 courgettes", "1 navet", "2 tomates",
       "100 g de pois chiches trempés", "1 c. à soupe de concentré de tomate",
-      "Gingembre, curcuma, poivre, sel, coriandre",
-      "Huile d'olive et une noix de beurre (ou smen)"
+      "Gingembre, curcuma, poivre, sel", "Coriandre fraîche", "Huile d'olive, beurre ou smen"
     ],
     steps: [
       "Faites revenir la viande avec les oignons émincés, les épices et l'huile d'olive.",
-      "Ajoutez les tomates, le concentré et couvrez d'eau. Laissez cuire 30 minutes.",
-      "Ajoutez les carottes, le navet et les pois chiches, puis 20 minutes après les courgettes.",
+      "Ajoutez tomates et concentré, couvrez d'eau et laissez cuire 30 minutes.",
+      "Ajoutez carottes, navet et pois chiches, puis les courgettes 20 minutes après.",
       "Faites cuire le couscous à la vapeur 3 fois en l'aérant entre chaque passage.",
-      "Servez le couscous arrosé de bouillon, avec la viande et les légumes dessus."
+      "Servez arrosé de bouillon, avec la viande et les légumes sur le dessus."
     ]
   },
   {
-    name: "Tajine kefta aux œufs", emoji: "🍳", cat: "sale", catLabel: "Salé",
-    time: "40 min", level: "Facile", levelClass: "facile",
+    name: "Tajine kefta aux œufs", img: "images/kefta.webp", cat: "sale", catLabel: "Salé",
+    desc: "Boulettes épicées mijotées dans une sauce tomate, coiffées d'œufs.",
+    time: "40 min", level: "Facile", levelClass: "facile", servings: "4 personnes",
+    tip: "Cassez les œufs juste avant de servir pour un jaune encore coulant.",
     ingredients: [
       "500 g de viande hachée", "1 oignon râpé",
       "Persil et coriandre hachés", "1 c. à café de cumin",
@@ -280,15 +366,17 @@ const recipes = [
       "3 tomates râpées", "2 œufs", "Huile d'olive"
     ],
     steps: [
-      "Mélangez la viande hachée avec l'oignon, les herbes et les épices. Formez des boulettes.",
-      "Faites mijoter les tomates râpées avec un filet d'huile d'olive 15 minutes dans le tajine.",
-      "Ajoutez les boulettes de kefta et laissez cuire 15 minutes à couvert.",
-      "Cassez les œufs sur le dessus et laissez prendre 5 minutes. Servez chaud avec du pain."
+      "Mélangez la viande avec l'oignon, les herbes et les épices. Formez des boulettes.",
+      "Faites mijoter les tomates râpées avec l'huile d'olive 15 minutes dans le tajine.",
+      "Ajoutez les boulettes et laissez cuire 15 minutes à couvert.",
+      "Cassez les œufs sur le dessus, laissez prendre 5 minutes. Servez avec du pain."
     ]
   },
   {
-    name: "Pastilla au poulet", emoji: "🥧", cat: "sale", catLabel: "Salé",
-    time: "1h30", level: "Difficile", levelClass: "difficile",
+    name: "Pastilla au poulet", img: "images/pastilla.webp", cat: "sale", catLabel: "Salé",
+    desc: "Feuilleté doré au poulet, amandes caramélisées et cannelle — le plat des grandes occasions.",
+    time: "1h30", level: "Difficile", levelClass: "difficile", servings: "8 personnes",
+    tip: "Montez la pastilla à l'avance et enfournez-la au dernier moment.",
     ingredients: [
       "1 poulet (~1,2 kg)", "500 g d'oignons émincés", "8 œufs",
       "250 g d'amandes", "10 feuilles de brick",
@@ -296,36 +384,40 @@ const recipes = [
       "Sucre glace", "Beurre"
     ],
     steps: [
-      "Faites cuire le poulet avec les oignons, les épices et les herbes jusqu'à ce qu'il soit tendre.",
-      "Effilochez le poulet, puis faites réduire la sauce.",
+      "Faites cuire le poulet avec oignons, épices et herbes jusqu'à ce qu'il soit tendre.",
+      "Effilochez le poulet puis faites bien réduire la sauce.",
       "Battez les œufs et brouillez-les dans la sauce réduite.",
       "Faites frire les amandes, concassez-les et mélangez avec sucre et cannelle.",
-      "Montez la pastilla en couches dans un plat rond beurré : feuilles, poulet, œufs, amandes.",
-      "Enfournez à 180°C pendant 30 minutes. Saupoudrez de sucre glace et cannelle avant de servir."
+      "Montez en couches dans un plat beurré : feuilles, poulet, œufs, amandes.",
+      "Enfournez à 180°C pendant 30 minutes. Saupoudrez de sucre glace et cannelle."
     ]
   },
   {
-    name: "Harira", emoji: "🍲", cat: "sale", catLabel: "Salé",
-    time: "1h", level: "Facile", levelClass: "facile",
+    name: "Harira", img: "images/harira.webp", cat: "sale", catLabel: "Salé",
+    desc: "Soupe onctueuse aux pois chiches et lentilles — l'incontournable du ftour.",
+    time: "1h", level: "Facile", levelClass: "facile", servings: "6 personnes",
+    tip: "Versez la tedouira en filet en remuant sans arrêt pour éviter les grumeaux.",
     ingredients: [
-      "200 g de pois chiches trempés la veille", "100 g de lentilles",
+      "200 g de pois chiches trempés", "100 g de lentilles",
       "500 g de tomates mixées", "1 oignon haché",
-      "Céleri, persil et coriandre", "100 g de viande en petits dés (optionnel)",
+      "Céleri, persil, coriandre", "100 g de viande en dés (optionnel)",
       "Gingembre, curcuma, poivre, sel",
       "2 c. à soupe de concentré de tomate",
-      "Tedouira : farine délayée dans de l'eau", "1 c. à soupe de smen"
+      "Tedouira : farine délayée dans l'eau", "1 c. à soupe de smen"
     ],
     steps: [
-      "Mettez tous les ingrédients (sauf la tedouira) dans une grande marmite avec 2 litres d'eau.",
+      "Mettez tout (sauf la tedouira) dans une marmite avec 2 litres d'eau.",
       "Laissez cuire 45 minutes à feu moyen.",
-      "Préparez la tedouira en délayant 3 c. à soupe de farine dans un verre d'eau.",
-      "Versez la tedouira en remuant sans arrêt jusqu'à épaississement (10 minutes).",
+      "Délayez 3 c. à soupe de farine dans un verre d'eau pour la tedouira.",
+      "Versez en remuant sans arrêt jusqu'à épaississement, environ 10 minutes.",
       "Ajoutez le smen, rectifiez l'assaisonnement et servez bien chaude."
     ]
   },
   {
-    name: "Baghrir", emoji: "🥞", cat: "gouter", catLabel: "Goûter",
-    time: "40 min", level: "Facile", levelClass: "facile",
+    name: "Baghrir", img: "images/baghrir.webp", cat: "gouter", catLabel: "Goûter",
+    desc: "Crêpes aux mille trous, moelleuses et légères, nappées de miel au beurre.",
+    time: "40 min", level: "Facile", levelClass: "facile", servings: "≈ 10 pièces",
+    tip: "La poêle doit être bien chaude mais jamais graissée entre deux crêpes.",
     ingredients: [
       "250 g de semoule fine", "60 g de farine",
       "1 c. à café de sucre", "1 c. à café de sel",
@@ -333,32 +425,35 @@ const recipes = [
       "500 ml d'eau tiède", "Miel et beurre pour servir"
     ],
     steps: [
-      "Mixez tous les ingrédients jusqu'à obtenir une pâte fluide et homogène.",
+      "Mixez tous les ingrédients jusqu'à une pâte fluide et homogène.",
       "Laissez reposer 30 minutes — la pâte doit mousser légèrement.",
-      "Versez une louche dans une poêle antiadhésive chaude, sans retourner : des trous se forment.",
+      "Versez une louche dans une poêle antiadhésive chaude, sans retourner : les trous se forment.",
       "Servez chaud avec du miel fondu mélangé au beurre."
     ]
   },
   {
-    name: "Msemen", emoji: "🫓", cat: "gouter", catLabel: "Goûter",
-    time: "1h", level: "Moyen", levelClass: "moyen",
+    name: "Msemen", img: "images/msemen.webp", cat: "gouter", catLabel: "Goûter",
+    desc: "Crêpes feuilletées dorées, croustillantes dehors et moelleuses dedans.",
+    time: "1h", level: "Moyen", levelClass: "moyen", servings: "≈ 8 pièces",
+    tip: "Plus la feuille est fine et transparente, plus le msemen sera feuilleté.",
     ingredients: [
-      "500 g de farine (ou moitié farine, moitié semoule fine)",
+      "500 g de farine (ou moitié semoule fine)",
       "1 c. à café de sel", "1 c. à café de sucre",
       "~300 ml d'eau tiède", "Huile et beurre fondu pour le façonnage"
     ],
     steps: [
-      "Pétrissez la farine, le sel, le sucre et l'eau pendant 10 minutes jusqu'à une pâte souple.",
-      "Laissez reposer 15 minutes, puis divisez en boules de la taille d'une mandarine.",
-      "Aplatissez chaque boule avec les mains huilées en une feuille très fine.",
-      "Pliez en portefeuille (enveloppe) en badigeonnant de beurre fondu.",
-      "Faites cuire des deux côtés dans une poêle chaude jusqu'à belle couleur dorée."
+      "Pétrissez farine, sel, sucre et eau pendant 10 minutes jusqu'à une pâte souple.",
+      "Laissez reposer 15 minutes puis divisez en boules de la taille d'une mandarine.",
+      "Aplatissez chaque boule aux mains huilées en une feuille très fine.",
+      "Pliez en portefeuille en badigeonnant de beurre fondu.",
+      "Cuisez des deux côtés à la poêle chaude jusqu'à belle couleur dorée."
     ]
   }
 ];
 
 const grid = document.getElementById('grid');
 const empty = document.getElementById('empty');
+const countEl = document.getElementById('count');
 const searchInput = document.getElementById('search');
 let activeCat = 'all';
 
@@ -366,7 +461,7 @@ function render() {
   const q = searchInput.value.toLowerCase().trim();
   grid.innerHTML = '';
   let count = 0;
-  recipes.forEach((r, i) => {
+  recipes.forEach(function(r, i) {
     const matchCat = activeCat === 'all' || r.cat === activeCat;
     const matchQ = !q || r.name.toLowerCase().includes(q);
     if (!matchCat || !matchQ) return;
@@ -374,29 +469,36 @@ function render() {
     const card = document.createElement('div');
     card.className = 'card';
     card.innerHTML =
-      '<div class="img">' + r.emoji + '</div>' +
+      '<div class="photo"><img src="' + r.img + '" alt="' + r.name + '" loading="lazy">' +
+      '<span class="cat-tag">' + r.catLabel + '</span></div>' +
       '<div class="body"><h3>' + r.name + '</h3>' +
+      '<p class="desc">' + r.desc + '</p>' +
       '<div class="meta"><span class="badge">⏱ ' + r.time + '</span>' +
       '<span class="badge ' + r.levelClass + '">' + r.level + '</span>' +
-      '<span class="badge">' + r.catLabel + '</span></div></div>';
+      '<span class="badge">👥 ' + r.servings + '</span></div>' +
+      '<span class="cta">Voir la recette →</span></div>';
     card.onclick = (function(idx){ return function(){ openModal(idx); }; })(i);
     grid.appendChild(card);
   });
   empty.style.display = count === 0 ? 'block' : 'none';
+  countEl.textContent = count + (count > 1 ? ' recettes' : ' recette');
 }
 
 function openModal(i) {
   const r = recipes[i];
-  document.getElementById('m-img').textContent = r.emoji;
+  const img = document.getElementById('m-img');
+  img.src = r.img; img.alt = r.name;
   document.getElementById('m-title').textContent = r.name;
   document.getElementById('m-meta').innerHTML =
     '<span class="badge">⏱ ' + r.time + '</span>' +
     '<span class="badge ' + r.levelClass + '">' + r.level + '</span>' +
+    '<span class="badge">👥 ' + r.servings + '</span>' +
     '<span class="badge">' + r.catLabel + '</span>';
   document.getElementById('m-ingredients').innerHTML =
     r.ingredients.map(function(x){ return '<li>' + x + '</li>'; }).join('');
   document.getElementById('m-steps').innerHTML =
     r.steps.map(function(x){ return '<li>' + x + '</li>'; }).join('');
+  document.getElementById('m-tip').innerHTML = '<strong>Astuce :</strong> ' + r.tip;
   document.getElementById('backdrop').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -408,6 +510,9 @@ function closeModal() {
 
 document.getElementById('backdrop').addEventListener('click', function(e) {
   if (e.target.id === 'backdrop') closeModal();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
 });
 
 document.querySelectorAll('.pill').forEach(function(p) {
