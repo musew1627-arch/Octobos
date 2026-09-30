@@ -45,7 +45,7 @@
     min-height: 62vh;
     display: flex; align-items: center; justify-content: center;
     text-align: center;
-    background: url('images/couscous.jpg?v=3') center/cover no-repeat;
+    background-color: #3A2A1E; background-size: cover; background-position: center; background-repeat: no-repeat;
     color: #fff;
   }
   .hero::after {
@@ -294,10 +294,20 @@
 
 <footer>© 2026 Les Délices de Soukaina — Fait avec ♥ au Maroc</footer>
 
+<script src="images/b64/b64-baghrir.js"></script>
+<script src="images/b64/b64-chebakia.js"></script>
+<script src="images/b64/b64-couscous.js"></script>
+<script src="images/b64/b64-harira.js"></script>
+<script src="images/b64/b64-kaab.js"></script>
+<script src="images/b64/b64-kefta.js"></script>
+<script src="images/b64/b64-msemen.js"></script>
+<script src="images/b64/b64-pastilla.js"></script>
 <script>
+function dataURI(key){ return "data:image/jpeg;base64," + (window.B64 ? window.B64[key] : ""); }
+document.querySelector('.hero').style.backgroundImage = 'url("' + dataURI('couscous') + '")';
 const recipes = [
   {
-    name: "Chebakia", img: "images/chebakia.jpg?v=3", cat: "sucre", catLabel: "Sucré",
+    name: "Chebakia", img: "chebakia", cat: "sucre", catLabel: "Sucré",
     desc: "Fleurs de sésame frites puis enrobées de miel — la reine des douceurs marocaines.",
     time: "1h + friture", level: "Difficile", levelClass: "difficile", servings: "≈ 30 pièces",
     tip: "Le miel doit être bien chaud et la chebakia bien égouttée pour un glaçage parfait.",
@@ -318,7 +328,7 @@ const recipes = [
     ]
   },
   {
-    name: "Kaab el Ghazal", img: "images/kaab.jpg?v=3", cat: "sucre", catLabel: "Sucré",
+    name: "Kaab el Ghazal", img: "kaab", cat: "sucre", catLabel: "Sucré",
     desc: "Cornes de gazelle fondantes à la pâte d'amande et à la cannelle.",
     time: "1h", level: "Moyen", levelClass: "moyen", servings: "≈ 20 pièces",
     tip: "Ne laissez pas dorer : des cornes pâles sont le signe d'une cuisson réussie.",
@@ -336,7 +346,7 @@ const recipes = [
     ]
   },
   {
-    name: "Couscous aux légumes", img: "images/couscous.jpg?v=3", cat: "sale", catLabel: "Salé",
+    name: "Couscous aux légumes", img: "couscous", cat: "sale", catLabel: "Salé",
     desc: "Le grand classique du vendredi : semoule vapeur, légumes fondants et viande tendre.",
     time: "1h30", level: "Moyen", levelClass: "moyen", servings: "6 personnes",
     tip: "Roulez le couscous avec un filet d'huile avant chaque passage à la vapeur.",
@@ -355,7 +365,7 @@ const recipes = [
     ]
   },
   {
-    name: "Tajine kefta aux œufs", img: "images/kefta.jpg?v=3", cat: "sale", catLabel: "Salé",
+    name: "Tajine kefta aux œufs", img: "kefta", cat: "sale", catLabel: "Salé",
     desc: "Boulettes épicées mijotées dans une sauce tomate, coiffées d'œufs.",
     time: "40 min", level: "Facile", levelClass: "facile", servings: "4 personnes",
     tip: "Cassez les œufs juste avant de servir pour un jaune encore coulant.",
@@ -373,7 +383,7 @@ const recipes = [
     ]
   },
   {
-    name: "Pastilla au poulet", img: "images/pastilla.jpg?v=3", cat: "sale", catLabel: "Salé",
+    name: "Pastilla au poulet", img: "pastilla", cat: "sale", catLabel: "Salé",
     desc: "Feuilleté doré au poulet, amandes caramélisées et cannelle — le plat des grandes occasions.",
     time: "1h30", level: "Difficile", levelClass: "difficile", servings: "8 personnes",
     tip: "Montez la pastilla à l'avance et enfournez-la au dernier moment.",
@@ -393,7 +403,7 @@ const recipes = [
     ]
   },
   {
-    name: "Harira", img: "images/harira.jpg?v=3", cat: "sale", catLabel: "Salé",
+    name: "Harira", img: "harira", cat: "sale", catLabel: "Salé",
     desc: "Soupe onctueuse aux pois chiches et lentilles — l'incontournable du ftour.",
     time: "1h", level: "Facile", levelClass: "facile", servings: "6 personnes",
     tip: "Versez la tedouira en filet en remuant sans arrêt pour éviter les grumeaux.",
@@ -414,7 +424,7 @@ const recipes = [
     ]
   },
   {
-    name: "Baghrir", img: "images/baghrir.jpg?v=3", cat: "gouter", catLabel: "Goûter",
+    name: "Baghrir", img: "baghrir", cat: "gouter", catLabel: "Goûter",
     desc: "Crêpes aux mille trous, moelleuses et légères, nappées de miel au beurre.",
     time: "40 min", level: "Facile", levelClass: "facile", servings: "≈ 10 pièces",
     tip: "La poêle doit être bien chaude mais jamais graissée entre deux crêpes.",
@@ -432,7 +442,7 @@ const recipes = [
     ]
   },
   {
-    name: "Msemen", img: "images/msemen.jpg?v=3", cat: "gouter", catLabel: "Goûter",
+    name: "Msemen", img: "msemen", cat: "gouter", catLabel: "Goûter",
     desc: "Crêpes feuilletées dorées, croustillantes dehors et moelleuses dedans.",
     time: "1h", level: "Moyen", levelClass: "moyen", servings: "≈ 8 pièces",
     tip: "Plus la feuille est fine et transparente, plus le msemen sera feuilleté.",
@@ -469,7 +479,7 @@ function render() {
     const card = document.createElement('div');
     card.className = 'card';
     card.innerHTML =
-      '<div class="photo"><img src="' + r.img + '" alt="' + r.name + '" loading="lazy">' +
+      '<div class="photo"><img src="' + dataURI(r.img) + '" alt="' + r.name + '"> ' +
       '<span class="cat-tag">' + r.catLabel + '</span></div>' +
       '<div class="body"><h3>' + r.name + '</h3>' +
       '<p class="desc">' + r.desc + '</p>' +
@@ -487,7 +497,7 @@ function render() {
 function openModal(i) {
   const r = recipes[i];
   const img = document.getElementById('m-img');
-  img.src = r.img; img.alt = r.name;
+  img.src = dataURI(r.img); img.alt = r.name;
   document.getElementById('m-title').textContent = r.name;
   document.getElementById('m-meta').innerHTML =
     '<span class="badge">⏱ ' + r.time + '</span>' +
